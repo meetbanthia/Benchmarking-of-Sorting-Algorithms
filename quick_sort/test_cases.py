@@ -1,33 +1,32 @@
 import random
-from quick_sort.quick_sort import quick_sort
+import time
+from quick_sort import quick_sort
 
 def generate_random_list(n):
-    list = [random.randint(1, 100) for _ in range(n)]
+    list = [random.randint(1, 1000000) for _ in range(n)]
     random.shuffle(list)
     return list
 
 def generate_sorted_list(n):
-    if n == 0:
-        return []
-    result = [random.randint(1, 100)]
-    for i in range(n - 1):
-        prev_num = result[-1]
-        next_num = random.randint(prev_num + 1, 100)
-        result.append(next_num)
-    return result
+    list = []
+    last_num = 0
+    for i in range(n):
+        new_num = random.randint(last_num+1, last_num+10)
+        list.append(new_num)
+        last_num = new_num
+    return list
 
 def generate_reverse_sorted_list(n):
-    if n == 0:
-        return []
-    result = [random.randint(1, 100)]
-    for i in range(n - 1):
-        prev_num = result[-1]
-        next_num = random.randint(1, prev_num - 1)
-        result.append(next_num)
-    return result
+    list = []
+    last_num = 100
+    for i in range(n):
+        new_num = random.randint(last_num-10, last_num-1)
+        list.append(new_num)
+        last_num = new_num
+    return list
 
 def print_list(arr):
-    print("[", end="")
+    print("The list is: [", end="")
     for i in range(len(arr)):
         if i < len(arr) - 1:
             print(arr[i], end=", ")
@@ -35,43 +34,55 @@ def print_list(arr):
             print(arr[i], end="")
     print("]")
 
+def choose_pivot(arr, pivot_choice):
+    if pivot_choice == 1:
+        return arr[0]
+    elif pivot_choice == 2:
+        return random.choice(arr)
+    elif pivot_choice == 3:
+        first = arr[0]
+        middle = arr[len(arr)//2]
+        last = arr[-1]
+        if first <= middle <= last or last <= middle <= first:
+            return middle
+        elif middle <= first <= last or last <= first <= middle:
+            return first
+        else:
+            return last
+
 def main():
     while True:
-        print("\nChoose an option:")
-        print("1. Generate random list")
-        print("2. Generate increasing list")
-        print("3. Generate decreasing list")
-        print("4. Exit")
-        choice = int(input("Enter choice: "))
-        if choice == 1:
-            n = int(input("Enter list size: "))
+        print("Choose an option:")
+        print("1. Sort a randomly generated list")
+        print("2. Sort a list sorted in increasing order")
+        print("3. Sort a list sorted in decreasing order")
+        option = input("Enter your choice: ")
+        if option not in ["1", "2", "3"]:
+            print("Invalid option")
+            continue
+        n = int(input("Enter the size of the list: "))
+        if option == "1":
             arr = generate_random_list(n)
-            print("Generated list:")
             print_list(arr)
-            quick_sort(arr, 0, n-1)
-            print("Sorted list:")
-            print_list(arr)
-        elif choice == 2:
-            n = int(input("Enter list size: "))
+        elif option == "2":
             arr = generate_sorted_list(n)
-            print("Generated list:")
             print_list(arr)
-            quick_sort(arr, 0, n-1)
-            print("Sorted list:")
-            print_list(arr)
-        elif choice == 3:
-            n = int(input("Enter list size: "))
-            arr = generate_reverse_sorted_list(n)
-            print("Generated list:")
-            print_list(arr)
-            quick_sort(arr, 0, n-1)
-            print("Sorted list:")
-            print_list(arr)
-        elif choice == 4:
-            print("Exiting...")
-            break
         else:
-            print("Invalid choice")
+            arr = generate_reverse_sorted_list(n)
+            print_list(arr)
+        
+        for pivot_choice in range(1, 4):
+            print("Pivot choice:", pivot_choice)
+            start_time = time.time()
+            pivot = choose_pivot(arr, pivot_choice)
+            sorted_arr = quick_sort(arr, 0, len(arr) - 1, pivot)
+            end_time = time.time()
+            print("Sorted list:", sorted_arr)
+            print("Time taken:", end_time - start_time, "seconds")
+            print()
+        
+        break
 
 if __name__ == "__main__":
     main()
+

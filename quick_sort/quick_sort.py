@@ -7,6 +7,7 @@ The process is repeated until the heap is empty.
 import random
 
 def quick_sort(arr, low, high, pivot_choice):
+    comp = 0
     if low < high:
         if pivot_choice == 1:
             pivot = arr[low]
@@ -18,21 +19,21 @@ def quick_sort(arr, low, high, pivot_choice):
             candidates.remove(max(candidates))
             candidates.remove(min(candidates))
             pivot = candidates[0]
-        pivot_idx = partition(arr, low, high, pivot)
-        quick_sort(arr, low, pivot_idx - 1, pivot_choice)
-        quick_sort(arr, pivot_idx + 1, high, pivot_choice)
-    return arr
+        pivot_idx, comp_partition = partition(arr, low, high, pivot)
+        comp += comp_partition
+        comp += quick_sort(arr, low, pivot_idx - 1, pivot_choice)
+        comp += quick_sort(arr, pivot_idx + 1, high, pivot_choice)
+    return comp
 
 def partition(arr, low, high, pivot):
+    comp = 0
     pivot_idx = arr.index(pivot)
     arr[pivot_idx], arr[high] = arr[high], arr[pivot_idx]
     i = low - 1
     for j in range(low, high):
+        comp += 1
         if arr[j] < pivot:
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1
-
-
-
+   

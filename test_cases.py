@@ -1,8 +1,9 @@
 import random
 import time
 import sys
-from quick_sort.quick_sort import quick_sort
-from quick_sort.pivot import choose_pivot
+from quick_sort.quick_sort import quick_sort_version1
+from quick_sort.quick_sort import quick_sort_version2
+from quick_sort.quick_sort import quick_sort_version3
 from heap_sort.heap_sort import heap_sort
 from merge_sort.merge_sort import merge_sort
 from radix_sort.radix_sort import radix_sort
@@ -45,27 +46,42 @@ def print_list(arr):
 def main():
     # Boolean value
     temp1=True
-    for n in range(100,1001,100):
+    for n in range(1,1001):
         arr = generate_sorted_list(n)
+        temp = arr
         with open("quick_sort/time_data_qs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
-                pivot = choose_pivot(arr, pivot_choice)
-                start_time = time.time() 
-                sorted_arr = quick_sort(arr, 0, n - 1, pivot)
-                end_time = time.time() 
-                f.write(f"{end_time - start_time:.10f}\n")
+                if pivot_choice==1:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version1(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
+                elif pivot_choice==2:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version2(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
+                else:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version3(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
                 
         with open("heap_sort/time_data_hs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = heap_sort(arr)
+            sorted_arr = heap_sort(temp)
             end_time = time.time() 
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("merge_sort/time_data_ms_inc.csv", "a") as f:
@@ -73,8 +89,9 @@ def main():
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = merge_sort(arr)
-            end_time = time.time() 
+            sorted_arr = merge_sort(temp)
+            end_time = time.time()
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("insertion_sort/time_data_is_inc.csv", "a") as f:
@@ -82,8 +99,9 @@ def main():
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = insertion_sort(arr)
+            sorted_arr = insertion_sort(temp)
             end_time = time.time() 
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("radix_sort/time_data_rs_inc.csv", "a") as f:
@@ -92,32 +110,47 @@ def main():
                 temp1 = False
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = radix_sort(arr)
+            sorted_arr = radix_sort(temp)
             end_time = time.time() 
             f.write(f"{end_time - start_time:.10f}\n")
 
     temp1 = True
-    for n in range(100,1001,100):
+    for n in range(1,1000):
         arr = generate_reverse_sorted_list(n)
+        temp= arr
         with open("quick_sort/time_data_qs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
-                pivot = choose_pivot(arr, pivot_choice)
-                start_time = time.time() 
-                sorted_arr = quick_sort(arr, 0, n - 1, pivot)
-                end_time = time.time() 
-                f.write(f"{end_time - start_time:.10f}\n")
+                if pivot_choice==1:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version1(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
+                elif pivot_choice==2:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version2(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
+                else:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version3(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
                 
         with open("heap_sort/time_data_hs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = heap_sort(arr)
+            sorted_arr = heap_sort(temp)
             end_time = time.time() 
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("merge_sort/time_data_ms_dec.csv", "a") as f:
@@ -125,8 +158,9 @@ def main():
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = merge_sort(arr)
+            sorted_arr = merge_sort(temp)
             end_time = time.time() 
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("insertion_sort/time_data_is_dec.csv", "a") as f:
@@ -134,8 +168,9 @@ def main():
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = insertion_sort(arr)
+            sorted_arr = insertion_sort(temp)
             end_time = time.time() 
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("radix_sort/time_data_rs_dec.csv", "a") as f:
@@ -144,32 +179,47 @@ def main():
                 temp1 = False
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = radix_sort(arr)
+            sorted_arr = radix_sort(temp)
             end_time = time.time() 
             f.write(f"{end_time - start_time:.10f}\n")
 
     temp1 = True
-    for n in range(100,1001,100):
+    for n in range(1,1000):
         arr = generate_random_list(n)
+        temp = arr
         with open("quick_sort/time_data_qs_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
-                pivot = choose_pivot(arr, pivot_choice)
-                start_time = time.time() 
-                sorted_arr = quick_sort(arr, 0, n - 1, pivot)
-                end_time = time.time() 
-                f.write(f"{end_time - start_time:.10f}\n")
+                if pivot_choice==1:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version1(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
+                elif pivot_choice==2:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version2(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
+                else:
+                    start_time = time.time() 
+                    sorted_arr = quick_sort_version3(temp, 0, n - 1)
+                    end_time = time.time()
+                    temp = arr 
+                    f.write(f"{end_time - start_time:.10f}\n")
                 
         with open("heap_sort/time_data_hs_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = heap_sort(arr)
+            sorted_arr = heap_sort(temp)
             end_time = time.time() 
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("merge_sort/time_data_ms_ran.csv", "a") as f:
@@ -177,8 +227,9 @@ def main():
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = merge_sort(arr)
+            sorted_arr = merge_sort(temp)
             end_time = time.time() 
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("insertion_sort/time_data_is_ran.csv", "a") as f:
@@ -186,8 +237,9 @@ def main():
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = insertion_sort(arr)
+            sorted_arr = insertion_sort(temp)
             end_time = time.time() 
+            temp = arr
             f.write(f"{end_time - start_time:.10f}\n")
             
         with open("radix_sort/time_data_rs_ran.csv", "a") as f:
@@ -196,7 +248,7 @@ def main():
                 temp1 = False
             f.write(f"{n}\t")
             start_time = time.time() 
-            sorted_arr = radix_sort(arr)
+            sorted_arr = radix_sort(temp)
             end_time = time.time() 
             f.write(f"{end_time - start_time:.10f}\n")
 

@@ -1,15 +1,19 @@
 quick_sort1 = open("quick_sort/time_data_qs_inc.csv", "wb")
 quick_sort2 = open("quick_sort/time_data_qs_dec.csv", "wb")
 quick_sort3 = open("quick_sort/time_data_qs_ran.csv", "wb")
+
 radix_sort1 = open("radix_sort/time_data_rs_inc.csv", "wb")
 radix_sort2 = open("radix_sort/time_data_rs_dec.csv", "wb")
 radix_sort3 = open("radix_sort/time_data_rs_ran.csv", "wb")
+
 merge_sort1 = open("merge_sort/time_data_ms_inc.csv", "wb")
 merge_sort2 = open("merge_sort/time_data_ms_dec.csv", "wb")
 merge_sort3 = open("merge_sort/time_data_ms_ran.csv", "wb")
+
 insertion_sort1 = open("insertion_sort/time_data_is_inc.csv", "wb")
 insertion_sort2 = open("insertion_sort/time_data_is_dec.csv", "wb")
 insertion_sort3 = open("insertion_sort/time_data_is_ran.csv", "wb")
+
 heap_sort1 = open("heap_sort/time_data_hs_inc.csv", "wb")
 heap_sort2 = open("heap_sort/time_data_hs_dec.csv", "wb")
 heap_sort3 = open("heap_sort/time_data_hs_ran.csv", "wb")

@@ -1,8 +1,8 @@
 """
 ALGORITHM:
-Heap Sort is a sorting algorithm that sorts an array by first converting it into a binary heap. 
-The binary heap is then sorted by repeatedly removing the largest element and placing it at the end of the array. 
-The process is repeated until the heap is empty.
+QuickSort is a sorting algorithm based on the Divide and Conquer algorithm that picks an element 
+as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position 
+in the sorted array.
 """
 
 # best -> pivot at middle -> sorted with pivot choice 3
@@ -11,23 +11,38 @@ The process is repeated until the heap is empty.
 
 import random
 
-def quick_sort(arr, low, high, pivot_choice):
+def quick_sort_version1(arr, low, high):
     count = 0
     if low < high:
-        if pivot_choice == 1:
-            pivot = arr[low]
-        elif pivot_choice == 2:
-            pivot = random.choice(arr[low:high+1])
-        else:
-            mid = (low + high) // 2
-            candidates = [arr[low], arr[mid], arr[high]]
-            candidates.remove(max(candidates))
-            candidates.remove(min(candidates))
-            pivot = candidates[0]
+        pivot = arr[low]
         pivot_idx, comp_partition = partition(arr, low, high, pivot)
         count += comp_partition
-        count += quick_sort(arr, low, pivot_idx - 1, pivot_choice)
-        count += quick_sort(arr, pivot_idx + 1, high, pivot_choice)
+        count += quick_sort_version1(arr, low, pivot_idx - 1)
+        count += quick_sort_version1(arr, pivot_idx + 1, high)
+    return count
+
+def quick_sort_version2(arr, low, high):
+    count = 0
+    if low < high:
+        pivot = random.choice(arr[low:high+1])
+        pivot_idx, comp_partition = partition(arr, low, high, pivot)
+        count += comp_partition
+        count += quick_sort_version2(arr, low, pivot_idx - 1)
+        count += quick_sort_version2(arr, pivot_idx + 1, high)
+    return count
+
+def quick_sort_version3(arr, low, high):
+    count = 0
+    if low < high:
+        mid = (low + high) // 2
+        candidates = [arr[low], arr[mid], arr[high]]
+        candidates.remove(max(candidates))
+        candidates.remove(min(candidates))
+        pivot = candidates[0]
+        pivot_idx, comp_partition = partition(arr, low, high, pivot)
+        count += comp_partition
+        count += quick_sort_version3(arr, low, pivot_idx - 1)
+        count += quick_sort_version3(arr, pivot_idx + 1, high)
     return count
 
 def partition(arr, low, high, pivot):

@@ -9,14 +9,16 @@ sorts them recursively, and then merges the two sorted halves into a single sort
 # worst -> reverse sorted
 
 def merge_sort(arr):
+    count = 0  # initialize count
     if len(arr) > 1:
         mid = len(arr) // 2
         left_arr = arr[:mid]
         right_arr = arr[mid:]
-        merge_sort(left_arr)
-        merge_sort(right_arr)
+        count += merge_sort(left_arr)  # add to count recursively
+        count += merge_sort(right_arr)  # add to count recursively
         i = j = k = 0
         while i < len(left_arr) and j < len(right_arr):
+            count += 1  # increment count for each comparison
             if left_arr[i] < right_arr[j]:
                 arr[k] = left_arr[i]
                 i += 1
@@ -32,4 +34,5 @@ def merge_sort(arr):
             arr[k] = right_arr[j]
             j += 1
             k += 1
-    return arr
+    return count  # return the total count
+

@@ -15,45 +15,38 @@ def quick_sort_version1(arr, low, high):
     count = 0
     if low < high:
         pivot = arr[low]
-        pivot_idx, comp_partition = partition(arr, low, high, pivot)
-        count += comp_partition
-        count += quick_sort_version1(arr, low, pivot_idx - 1)
-        count += quick_sort_version1(arr, pivot_idx + 1, high)
+        pivot_idx = partition(arr, low, high, pivot)
+        quick_sort_version1(arr, low, pivot_idx - 1)
+        quick_sort_version1(arr, pivot_idx + 1, high)
     return count
 
 def quick_sort_version2(arr, low, high):
-    count = 0
     if low < high:
         pivot = random.choice(arr[low:high+1])
-        pivot_idx, comp_partition = partition(arr, low, high, pivot)
-        count += comp_partition
-        count += quick_sort_version2(arr, low, pivot_idx - 1)
-        count += quick_sort_version2(arr, pivot_idx + 1, high)
-    return count
+        pivot_idx = partition(arr, low, high, pivot)
+        quick_sort_version2(arr, low, pivot_idx - 1)
+        quick_sort_version2(arr, pivot_idx + 1, high)
 
 def quick_sort_version3(arr, low, high):
-    count = 0
     if low < high:
         mid = (low + high) // 2
         candidates = [arr[low], arr[mid], arr[high]]
         candidates.remove(max(candidates))
         candidates.remove(min(candidates))
         pivot = candidates[0]
-        pivot_idx, comp_partition = partition(arr, low, high, pivot)
-        count += comp_partition
-        count += quick_sort_version3(arr, low, pivot_idx - 1)
-        count += quick_sort_version3(arr, pivot_idx + 1, high)
-    return count
+        pivot_idx = partition(arr, low, high, pivot)
+        quick_sort_version3(arr, low, pivot_idx - 1)
+        quick_sort_version3(arr, pivot_idx + 1, high)
+
 
 def partition(arr, low, high, pivot):
-    count = 0
     pivot_idx = arr.index(pivot)
     arr[pivot_idx], arr[high] = arr[high], arr[pivot_idx]
     i = low - 1
     for j in range(low, high):
         if arr[j] < pivot:
-            count += 1
+            1
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1, count
+    return i + 1

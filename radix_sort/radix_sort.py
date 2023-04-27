@@ -20,5 +20,3 @@ def radix_sort(arr):
             buckets[digit].append(num)
 
         arr = [num for bucket in buckets for num in bucket]
-
-    return arr

@@ -5,6 +5,10 @@ It can sort integers, strings, and other data types that can be represented as a
 Radix Sort works by sorting the digits starting from the least significant digit to the most significant digit.
 """
 
+# best -> sorted
+# avg -> random
+# worst -> reverse sorted
+
 def radix_sort(arr):
     max_digit = len(str(max(arr)))
 

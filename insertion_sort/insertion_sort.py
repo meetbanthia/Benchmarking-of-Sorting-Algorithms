@@ -4,6 +4,10 @@ Insertion Sort is a simple sorting algorithm that works by repeatedly iterating 
 and sorting each element at its correct position with respect to the already sorted elements.
 """
 
+# best -> sorted
+# avg -> random
+# worst -> reverse sorted
+
 def insertion_sort(arr):
     for i in range(1, len(arr)):
         key = arr[i]

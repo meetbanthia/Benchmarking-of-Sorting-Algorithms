@@ -4,6 +4,9 @@ Heap Sort is a sorting algorithm that sorts an array by first converting it into
 The binary heap is then sorted by repeatedly removing the largest element and placing it at the end of the array. 
 The process is repeated until the heap is empty.
 """
+# best -> sorted
+# average -> random
+# worst -> reverse sorted
 
 def heap_sort(arr):
     n = len(arr)

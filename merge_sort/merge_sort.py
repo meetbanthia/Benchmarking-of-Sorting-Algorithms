@@ -4,6 +4,10 @@ Merge Sort is a divide and conquer algorithm that divides the array into two hal
 sorts them recursively, and then merges the two sorted halves into a single sorted array.
 """
 
+# best -> sorted
+# avg -> random
+# worst -> reverse sorted
+
 def merge_sort(arr):
     if len(arr) > 1:
         mid = len(arr) // 2

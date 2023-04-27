@@ -1,12 +1,12 @@
 import random
 import time
+import sys
 from quick_sort.quick_sort import quick_sort
 from quick_sort.pivot import choose_pivot
 from heap_sort.heap_sort import heap_sort
 from merge_sort.merge_sort import merge_sort
 from radix_sort.radix_sort import radix_sort
 from insertion_sort.insertion_sort import insertion_sort
-import sys
 sys.setrecursionlimit(10**6)
 
 # Three types of functions to generate three different types of lists

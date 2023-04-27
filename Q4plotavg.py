@@ -2,11 +2,11 @@ import csv
 import matplotlib.pyplot as plt
 
 input_size = []
+
 times_qs = []
 times_ms = []
 times_hs = []
 times_rs = []
-
 times_is = []
 
 

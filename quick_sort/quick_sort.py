@@ -51,11 +51,3 @@ def partition(arr, low, high, pivot):
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
     return i + 1
 
-if __name__ == "__quick_sort_version1__":
-    quick_sort_version1
-
-if __name__ == "__quick_sort_version2__":
-    quick_sort_version2
-
-if __name__ == "__quick_sort_version3__":
-    quick_sort_version3

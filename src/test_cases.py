@@ -1,6 +1,7 @@
 import random
 import time
 import sys
+sys.path.append("..")
 from quick_sort.quick_sort import quick_sort_version1
 from quick_sort.quick_sort import quick_sort_version2
 from quick_sort.quick_sort import quick_sort_version3
@@ -49,7 +50,7 @@ def main():
     for n in range(1, 1001, 10):
         array1 = generate_sorted_list(n)
         temp = array1 # So that the array3ays are not dynamically changed at runtime
-        with open("quick_sort/csv files/time_data_qs_inc.csv", "a") as f:
+        with open("../quick_sort/csv files/time_data_qs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
             for pivot_choice in range(1, 4):
@@ -77,7 +78,7 @@ def main():
                     temp = array1
                     f.write(f"{end_time - start_time:.10f}\n")
                 
-        with open("heap_sort/csv files/time_data_hs_inc.csv", "a") as f:
+        with open("../heap_sort/csv files/time_data_hs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -87,7 +88,7 @@ def main():
             temp = array1
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("merge_sort/csv files/time_data_ms_inc.csv", "a") as f:
+        with open("../merge_sort/csv files/time_data_ms_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -97,7 +98,7 @@ def main():
             temp = array1
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("insertion_sort/csv files/time_data_is_inc.csv", "a") as f:
+        with open("../insertion_sort/csv files/time_data_is_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -107,7 +108,7 @@ def main():
             temp = array1
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("radix_sort/csv files/time_data_rs_inc.csv", "a") as f:
+        with open("../radix_sort/csv files/time_data_rs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
                 temp1 = False
@@ -121,7 +122,7 @@ def main():
     for n in range(1, 1001, 10):
         array2 = generate_reverse_sorted_list(n)
         temp = array2
-        with open("quick_sort/csv files/time_data_qs_dec.csv", "a") as f:
+        with open("../quick_sort/csv files/time_data_qs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
             for pivot_choice in range(1, 4):
@@ -149,7 +150,7 @@ def main():
                     f.write(f"{end_time - start_time:.10f}\n")
                 
 
-        with open("heap_sort/csv files/time_data_hs_dec.csv", "a") as f:
+        with open("../heap_sort/csv files/time_data_hs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -159,7 +160,7 @@ def main():
             temp = array2
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("merge_sort/csv files/time_data_ms_dec.csv", "a") as f:
+        with open("../merge_sort/csv files/time_data_ms_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -169,7 +170,7 @@ def main():
             temp = array2
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("insertion_sort/csv files/time_data_is_dec.csv", "a") as f:
+        with open("../insertion_sort/csv files/time_data_is_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -179,7 +180,7 @@ def main():
             temp = array2
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("radix_sort/csv files/time_data_rs_dec.csv", "a") as f:
+        with open("../radix_sort/csv files/time_data_rs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
                 temp1 = False
@@ -193,7 +194,7 @@ def main():
     for n in range(1, 1001, 10):
         array3 = generate_random_list(n)
         temp = array3
-        with open("quick_sort/csv files/time_data_qs_ran.csv", "a") as f:
+        with open("../quick_sort/csv files/time_data_qs_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
             for pivot_choice in range(1, 4):
@@ -221,7 +222,7 @@ def main():
                     temp = array3 
                     f.write(f"{end_time - start_time:.10f}\n")
                 
-        with open("heap_sort/csv files/time_data_hs_ran.csv", "a") as f:
+        with open("../heap_sort/csv files/time_data_hs_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -231,7 +232,7 @@ def main():
             temp = array3
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("merge_sort/csv files/time_data_ms_ran.csv", "a") as f:
+        with open("../merge_sort/csv files/time_data_ms_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -241,7 +242,7 @@ def main():
             temp = array3
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("insertion_sort/csv files/time_data_is_ran.csv", "a") as f:
+        with open("../insertion_sort/csv files/time_data_is_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
             f.write(f"{n}\t")
@@ -251,7 +252,7 @@ def main():
             temp = array3
             f.write(f"{end_time - start_time:.10f}\n")
             
-        with open("radix_sort/csv files/time_data_rs_ran.csv", "a") as f:
+        with open("../radix_sort/csv files/time_data_rs_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
                 temp1 = False

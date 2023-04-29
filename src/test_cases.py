@@ -84,7 +84,6 @@ def main():
         with open("../radix_sort/csv files/time_data_rs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
-                temp1 = False
             f.write(f"{n}\t")
             start_time = time.perf_counter() 
             radix_sort(temp)
@@ -94,6 +93,7 @@ def main():
         with open("../quick_sort/csv files/time_data_qs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
+                temp1 = False
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
@@ -157,7 +157,6 @@ def main():
         with open("../radix_sort/csv files/time_data_rs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
-                temp1 = False
             f.write(f"{n}\t")
             start_time = time.perf_counter() 
             radix_sort(temp)
@@ -167,6 +166,7 @@ def main():
         with open("../quick_sort/csv files/time_data_qs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
+                temp1 = False
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
@@ -230,7 +230,6 @@ def main():
         with open("../radix_sort/csv files/time_data_rs_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
-                temp1 = False
             f.write(f"{n}\t")
             start_time = time.perf_counter() 
             radix_sort(temp)
@@ -240,6 +239,7 @@ def main():
         with open("../quick_sort/csv files/time_data_qs_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
+                temp1 = False
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")

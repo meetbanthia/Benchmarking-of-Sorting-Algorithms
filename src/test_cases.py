@@ -11,26 +11,11 @@ from radix_sort.radix_sort import radix_sort
 from insertion_sort.insertion_sort import insertion_sort
 sys.setrecursionlimit(10**6)
 
-# Three types of functions to generate three different types of lists
-def generate_random_list(n):
-    list = [random.randint(1, 1001) for _ in range(n)]
-    random.shuffle(list)
-    return list
-
 def generate_sorted_list(n):
     list = []
     last_num = 0
     for i in range(n):
         new_num = random.randint(last_num+1, last_num+10)
-        list.append(new_num)
-        last_num = new_num
-    return list
-
-def generate_reverse_sorted_list(n):
-    list = []
-    last_num = 100
-    for i in range(n):
-        new_num = random.randint(last_num-10, last_num-1)
         list.append(new_num)
         last_num = new_num
     return list
@@ -47,7 +32,7 @@ def print_list(array3):
 def main():
     # Boolean value
     temp1=True
-    for n in range(1, 3000, 100):
+    for n in range(10, 1001, 10):
         array1 = generate_sorted_list(n)
         temp = array1 # So that the array3ays are not dynamically changed at runtime
         
@@ -88,12 +73,12 @@ def main():
             start_time = time.perf_counter() 
             radix_sort(temp)
             end_time = time.perf_counter() 
+            temp = array1
             f.write(f"{end_time - start_time:.10f}\n")
 
         with open("../quick_sort/csv files/time_data_qs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
-                temp1 = False
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
@@ -119,9 +104,8 @@ def main():
                     temp = array1
                     f.write(f"{end_time - start_time:.10f}\n")
 
-    temp1 = True
-    for n in range(1, 3000, 100):
-        array2 = generate_reverse_sorted_list(n)
+        array2 = array1
+        array2.sort(reverse = True)
         temp = array2
 
         with open("../heap_sort/csv files/time_data_hs_dec.csv", "a") as f:
@@ -161,12 +145,12 @@ def main():
             start_time = time.perf_counter() 
             radix_sort(temp)
             end_time = time.perf_counter() 
+            temp = array2
             f.write(f"{end_time - start_time:.10f}\n")
 
         with open("../quick_sort/csv files/time_data_qs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
-                temp1 = False
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
@@ -190,13 +174,11 @@ def main():
                     end_time = time.perf_counter()
                     temp = array2 
                     f.write(f"{end_time - start_time:.10f}\n")
-                
 
-    temp1 = True
-    for n in range(1, 3000, 100):
-        array3 = generate_random_list(n)
+        array3 = array2
+        random.shuffle(array3)
         temp = array3
-                
+                    
         with open("../heap_sort/csv files/time_data_hs_ran.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
@@ -234,6 +216,7 @@ def main():
             start_time = time.perf_counter() 
             radix_sort(temp)
             end_time = time.perf_counter() 
+            temp = array3
             f.write(f"{end_time - start_time:.10f}\n")
 
         with open("../quick_sort/csv files/time_data_qs_ran.csv", "a") as f:

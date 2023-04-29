@@ -47,37 +47,10 @@ def print_list(array3):
 def main():
     # Boolean value
     temp1=True
-    for n in range(1, 1001, 10):
+    for n in range(1, 3000, 100):
         array1 = generate_sorted_list(n)
         temp = array1 # So that the array3ays are not dynamically changed at runtime
-        with open("../quick_sort/csv files/time_data_qs_inc.csv", "a") as f:
-            if temp1:
-                f.write("n\tPivot choice\tTime taken (seconds)\n")
-            for pivot_choice in range(1, 4):
-                f.write(f"{n}\t")
-                f.write(f"{pivot_choice}\t")
-
-                if pivot_choice==1:
-                    start_time = time.perf_counter() 
-                    quick_sort_version1(temp, 0, n - 1)
-                    end_time = time.perf_counter()
-                    temp = array1 
-                    f.write(f"{end_time - start_time:.10f}\n")
-
-                elif pivot_choice == 2:
-                    start_time = time.perf_counter() 
-                    quick_sort_version2(temp, 0, n - 1)
-                    end_time = time.perf_counter()
-                    temp = array1 
-                    f.write(f"{end_time - start_time:.10f}\n")
-
-                else:
-                    start_time = time.perf_counter() 
-                    quick_sort_version3(temp, 0, n - 1)
-                    end_time = time.perf_counter()
-                    temp = array1
-                    f.write(f"{end_time - start_time:.10f}\n")
-                
+        
         with open("../heap_sort/csv files/time_data_hs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tTime taken (seconds)\n")
@@ -118,37 +91,38 @@ def main():
             end_time = time.perf_counter() 
             f.write(f"{end_time - start_time:.10f}\n")
 
-    temp1 = True
-    for n in range(1, 1001, 10):
-        array2 = generate_reverse_sorted_list(n)
-        temp = array2
-        with open("../quick_sort/csv files/time_data_qs_dec.csv", "a") as f:
+        with open("../quick_sort/csv files/time_data_qs_inc.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
+
                 if pivot_choice==1:
                     start_time = time.perf_counter() 
                     quick_sort_version1(temp, 0, n - 1)
                     end_time = time.perf_counter()
-                    temp = array2 
+                    temp = array1 
                     f.write(f"{end_time - start_time:.10f}\n")
 
-                elif pivot_choice==2:
+                elif pivot_choice == 2:
                     start_time = time.perf_counter() 
                     quick_sort_version2(temp, 0, n - 1)
                     end_time = time.perf_counter()
-                    temp = array2
+                    temp = array1 
                     f.write(f"{end_time - start_time:.10f}\n")
 
                 else:
                     start_time = time.perf_counter() 
                     quick_sort_version3(temp, 0, n - 1)
                     end_time = time.perf_counter()
-                    temp = array2 
+                    temp = array1
                     f.write(f"{end_time - start_time:.10f}\n")
-                
+
+    temp1 = True
+    for n in range(1, 3000, 100):
+        array2 = generate_reverse_sorted_list(n)
+        temp = array2
 
         with open("../heap_sort/csv files/time_data_hs_dec.csv", "a") as f:
             if temp1:
@@ -190,37 +164,38 @@ def main():
             end_time = time.perf_counter() 
             f.write(f"{end_time - start_time:.10f}\n")
 
-    temp1 = True
-    for n in range(1, 1001, 10):
-        array3 = generate_random_list(n)
-        temp = array3
-        with open("../quick_sort/csv files/time_data_qs_ran.csv", "a") as f:
+        with open("../quick_sort/csv files/time_data_qs_dec.csv", "a") as f:
             if temp1:
                 f.write("n\tPivot choice\tTime taken (seconds)\n")
             for pivot_choice in range(1, 4):
                 f.write(f"{n}\t")
                 f.write(f"{pivot_choice}\t")
-
                 if pivot_choice==1:
                     start_time = time.perf_counter() 
                     quick_sort_version1(temp, 0, n - 1)
                     end_time = time.perf_counter()
-                    temp = array3 
+                    temp = array2 
                     f.write(f"{end_time - start_time:.10f}\n")
 
                 elif pivot_choice==2:
                     start_time = time.perf_counter() 
                     quick_sort_version2(temp, 0, n - 1)
                     end_time = time.perf_counter()
-                    temp = array3 
+                    temp = array2
                     f.write(f"{end_time - start_time:.10f}\n")
 
                 else:
                     start_time = time.perf_counter() 
                     quick_sort_version3(temp, 0, n - 1)
                     end_time = time.perf_counter()
-                    temp = array3 
+                    temp = array2 
                     f.write(f"{end_time - start_time:.10f}\n")
+                
+
+    temp1 = True
+    for n in range(1, 3000, 100):
+        array3 = generate_random_list(n)
+        temp = array3
                 
         with open("../heap_sort/csv files/time_data_hs_ran.csv", "a") as f:
             if temp1:
@@ -261,6 +236,34 @@ def main():
             radix_sort(temp)
             end_time = time.perf_counter() 
             f.write(f"{end_time - start_time:.10f}\n")
+
+        with open("../quick_sort/csv files/time_data_qs_ran.csv", "a") as f:
+            if temp1:
+                f.write("n\tPivot choice\tTime taken (seconds)\n")
+            for pivot_choice in range(1, 4):
+                f.write(f"{n}\t")
+                f.write(f"{pivot_choice}\t")
+
+                if pivot_choice==1:
+                    start_time = time.perf_counter() 
+                    quick_sort_version1(temp, 0, n - 1)
+                    end_time = time.perf_counter()
+                    temp = array3 
+                    f.write(f"{end_time - start_time:.10f}\n")
+
+                elif pivot_choice==2:
+                    start_time = time.perf_counter() 
+                    quick_sort_version2(temp, 0, n - 1)
+                    end_time = time.perf_counter()
+                    temp = array3 
+                    f.write(f"{end_time - start_time:.10f}\n")
+
+                else:
+                    start_time = time.perf_counter() 
+                    quick_sort_version3(temp, 0, n - 1)
+                    end_time = time.perf_counter()
+                    temp = array3 
+                    f.write(f"{end_time - start_time:.10f}\n")
 
 if __name__ == "__main__":
     main()

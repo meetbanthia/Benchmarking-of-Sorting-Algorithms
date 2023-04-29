@@ -17,4 +17,3 @@ def insertion_sort(arr):
             j -= 1
             count += 1 
         arr[j + 1] = key
-

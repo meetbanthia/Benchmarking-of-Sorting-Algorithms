@@ -9,7 +9,7 @@ times_hs = []
 times_rs = []
 times_is = []
 
-# Plot for average case comparision of all the 5 sorts
+# Plot for best case comparision of all the 5 sorts
 with open('../insertion_sort/csv files/time_data_is_inc.csv', 'r') as f:
     reader = csv.reader(f, delimiter='\t') # as headers in a .csv file are separated by tabs
     next(reader) # skip the header row
